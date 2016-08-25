@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         int price = calculatePrice(quantity,5);
         boolean whipped_cream = checkWhippedCream();
         boolean chocolate = checkChocolate();
-        String priceMessage = createOrderSummary(quantity,price,whipped_cream,chocolate);
+        String name = getName();
+        String priceMessage = createOrderSummary(quantity,price,whipped_cream,chocolate,name);
         displayMessage(priceMessage);
     }
 
@@ -66,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         return  quantity * priceCup;
     }
 
-    private String createOrderSummary(int quantity,int price, boolean whipped_cream, boolean chocolate){
-        String message = "Name:Kaptain Kunal \nAdd whipped cream? " + whipped_cream +"\nAdd chocolate? " + chocolate + "\nQuantity:" + quantity + " \nTotal: $" + price + " \nThank you!";
+    private String createOrderSummary(int quantity,int price, boolean whipped_cream, boolean chocolate, String name){
+        String message = "Name:" + name + " \nAdd whipped cream? " + whipped_cream +"\nAdd chocolate? " + chocolate + "\nQuantity:" + quantity + " \nTotal: $" + price + " \nThank you!";
         return message;
     }
 
@@ -79,5 +81,10 @@ public class MainActivity extends AppCompatActivity {
     private Boolean checkChocolate(){
         CheckBox chocolate_checkbox= (CheckBox) findViewById(R.id.chocolate_checkbox);
         return chocolate_checkbox.isChecked();
+    }
+
+    private String getName(){
+        EditText name_edit_Text= (EditText) findViewById(R.id.name_edit_Text);
+        return name_edit_Text.getText().toString();
     }
 }

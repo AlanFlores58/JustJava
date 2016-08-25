@@ -18,6 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_edit_Text"
+                android:inputType="textCapWords"
+                android:hint="Name"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
