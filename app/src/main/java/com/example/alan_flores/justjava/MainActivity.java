@@ -1,8 +1,11 @@
 package com.example.alan_flores.justjava;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TextView textView = new TextView(this);
+        //setContentView(textView);
         setContentView(R.layout.activity_main);
     }
 
@@ -25,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         //display(quantity);
         //displayPrice(quantity * 5);
-        int price = (quantity * 5);
-        String priceMessage = "Total: $" + price;
-        priceMessage = priceMessage + "\nThank you!";
+        int price = calculatePrice(quantity,5);
+        boolean whipped_cream = checkWhippedCream();
+        boolean chocolate = checkChocolate();
+        String priceMessage = createOrderSummary(quantity,price,whipped_cream,chocolate);
         displayMessage(priceMessage);
     }
 
@@ -37,11 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-
-    private void displayPrice(int number){
-        TextView priceTextView= (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
     public void increment(View viewr){
@@ -57,7 +58,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayMessage(String message){
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView= (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
+    }
+
+    private int calculatePrice(int quantity,int priceCup){
+        return  quantity * priceCup;
+    }
+
+    private String createOrderSummary(int quantity,int price, boolean whipped_cream, boolean chocolate){
+        String message = "Name:Kaptain Kunal \nAdd whipped cream? " + whipped_cream +"\nAdd chocolate? " + chocolate + "\nQuantity:" + quantity + " \nTotal: $" + price + " \nThank you!";
+        return message;
+    }
+
+    private Boolean checkWhippedCream(){
+        CheckBox whipped_cream_checkbox= (CheckBox) findViewById(R.id.Whipped_cream_checkbox);
+        return whipped_cream_checkbox.isChecked();
+    }
+
+    private Boolean checkChocolate(){
+        CheckBox chocolate_checkbox= (CheckBox) findViewById(R.id.chocolate_checkbox);
+        return chocolate_checkbox.isChecked();
     }
 }
