@@ -27,14 +27,9 @@
                 android:hint="@string/name"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/HeadereTextStyle"
                 android:text="@string/Topping"
-                android:textColor="@android:color/darker_gray"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"
-                android:textSize="25sp"/>
+                android:layout_marginBottom="16dp" />
 
             <CheckBox
                 android:id="@+id/Whipped_cream_checkbox"
@@ -55,14 +50,9 @@
                 android:text="@string/check2"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/HeadereTextStyle"
                 android:text="@string/qty"
-                android:textColor="@android:color/darker_gray"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"
-                android:textSize="25sp"/>
+                android:layout_marginBottom="16dp"/>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
