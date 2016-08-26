@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         String name = getName();
         String priceMessage = createOrderSummary(quantity,price,whipped_cream,chocolate,name);
         //displayMessage(priceMessage);
-        composeEmail("JustJava order for " + name, priceMessage);
+        composeEmail(getString(R.string.Subject,name), priceMessage);
         //Intent intent = new Intent(Intent.ACTION_VIEW);
         //intent.setData(Uri.parse("geo:47.6, -122.3"));
         //if (intent.resolveActivity(getPackageManager()) != null){
